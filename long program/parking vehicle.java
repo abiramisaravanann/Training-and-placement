@@ -25,7 +25,6 @@ class Slot {
         }
         this.vehicle = v;
     }
-
     void remove() {
         this.vehicle = null;
     }

@@ -5,9 +5,6 @@ class Vehicle {
         this.vehicleNumber = vehicleNumber;
     }
 }
-
-// -------------------------------------
-
 class Slot {
     int slotId;
     Vehicle vehicle;
@@ -23,7 +20,7 @@ class Slot {
 
     void park(Vehicle v) {
         if (v == null) {
-            System.out.println("❌ Cannot park null vehicle");
+            System.out.println("Cannot park null vehicle");
             return;
         }
         this.vehicle = v;
@@ -33,9 +30,6 @@ class Slot {
         this.vehicle = null;
     }
 }
-
-// -------------------------------------
-
 class ParkingLot {
     private Slot[] slots;
 
@@ -49,44 +43,35 @@ class ParkingLot {
             slots[i] = new Slot(i);
         }
     }
-
-    // Park Vehicle
     void parkVehicle(Vehicle v) {
         if (v == null) {
-            System.out.println("❌ Invalid vehicle!");
+            System.out.println("Invalid vehicle!");
             return;
         }
-
         for (Slot slot : slots) {
             if (slot.isEmpty()) {
                 slot.park(v);
-                System.out.println("✅ Vehicle " + v.vehicleNumber + " parked at slot " + slot.slotId);
+                System.out.println("Vehicle " + v.vehicleNumber + " parked at slot " + slot.slotId);
                 return;
             }
         }
-        System.out.println("❌ Parking Full!");
+        System.out.println("Parking Full!");
     }
-
-    // Remove Vehicle
     void removeVehicle(int slotId) {
         if (slotId < 0 || slotId >= slots.length) {
-            System.out.println("❌ Invalid slot number!");
+            System.out.println("Invalid slot number!");
             return;
         }
-
         Slot slot = slots[slotId];
-
         if (!slot.isEmpty()) {
-            System.out.println("🚗 Vehicle " + slot.vehicle.vehicleNumber + " removed from slot " + slotId);
+            System.out.println("Vehicle " + slot.vehicle.vehicleNumber + " removed from slot " + slotId);
             slot.remove();
         } else {
-            System.out.println("⚠️ Slot already empty!");
+            System.out.println("Slot already empty!");
         }
     }
-
-    // Display Parking Status
     void display() {
-        System.out.println("\n📊 Parking Lot Status:");
+        System.out.println("\nParking Lot Status:");
         for (Slot slot : slots) {
             if (slot.isEmpty()) {
                 System.out.println("Slot " + slot.slotId + " → Empty");
@@ -96,9 +81,6 @@ class ParkingLot {
         }
     }
 }
-
-// -------------------------------------
-
 public class main {
     public static void main(String[] args) {
 
